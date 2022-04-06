@@ -6,11 +6,9 @@ Created on Tue Apr  5 03:40:14 2022
 """
 import streamlit as st
 from tensorflow import keras
-from keras.applications.mobilenet_v2 import MobileNetV2
 import numpy as np
 from PIL import Image
 import cv2
-from keras.applications.mobilenet_v2 import preprocess_input,decode_predictions
 
 st.title('Image Classification using CNN model')
 upload = st.file_uploader('Label = Upload the image')
@@ -27,7 +25,5 @@ if upload is not None:
   x = np.expand_dims(x,axis = 0)
   x = preprocess_input(x)
   y = model_new.predict(x)
-  #st.write(y)
-  #st.write(f'result: {np.argmax(y)}')
   st.write('OUTPUT: ')
   st.write('Result: ',classes[np.argmax(y)])
